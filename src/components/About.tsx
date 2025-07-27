@@ -1,5 +1,6 @@
 import React from 'react';
 import { User, Award, Code, Zap } from 'lucide-react';
+import ronaldoImage from '../assets/ronaldo.jpeg';
 
 const About = () => {
   const highlights = [
@@ -43,9 +44,13 @@ const About = () => {
               digitais excepcionais para empresas de todos os portes.
             </p>
 
-            {/* Professional Photo Placeholder */}
-            <div className="bg-blue-600 w-32 h-32 rounded-full flex items-center justify-center mb-8">
-              <User className="h-16 w-16 text-white" />
+            {/* Professional Photo */}
+            <div className="w-32 h-32 rounded-full overflow-hidden mb-8">
+              <img 
+                src={ronaldoImage} 
+                alt="Ronaldo Oliveira" 
+                className="w-full h-full object-cover"
+              />
             </div>
 
             {/* LinkedIn Link */}

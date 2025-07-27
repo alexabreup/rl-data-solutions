@@ -13,8 +13,8 @@ const Contact = () => {
     {
       icon: MessageCircle,
       title: 'WhatsApp',
-      value: '+55 (11) 99999-9999',
-      href: 'https://wa.me/5511999999999',
+      value: '+55 11 94526-5110',
+      href: 'https://wa.me/5511945265110',
       color: 'bg-green-600'
     },
     {
@@ -84,7 +84,7 @@ const Contact = () => {
             Agende uma consulta gratuita e descubra como podemos impulsionar seus resultados
           </p>
           <a
-            href="https://wa.me/5511999999999"
+            href="https://wa.me/5511945265110"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center space-x-2 bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transform hover:scale-105 transition-all duration-300"
