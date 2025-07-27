@@ -22,9 +22,9 @@ const Hero = () => {
         <div className="max-w-4xl mx-auto">
           {/* Main Title */}
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-            R&L Data
+            Transformamos dados em
             <span className="block text-blue-400">
-              Solutions
+              decisões inteligentes
             </span>
           </h1>
 
