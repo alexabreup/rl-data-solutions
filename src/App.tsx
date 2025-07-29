@@ -1,24 +1,22 @@
 import React from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import EcommerceHighlight from './components/EcommerceHighlight';
-import EcommerceDetails from './components/EcommerceDetails';
+import Features from './components/EcommerceHighlight';
 import Services from './components/Services';
-import TechnicalSolutions from './components/TechnicalSolutions';
+import Pricing from './components/TechnicalSolutions';
 import About from './components/About';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gray-950">
       <Header />
       <main>
         <Hero />
-        <EcommerceHighlight />
-        <EcommerceDetails />
+        <Features />
         <Services />
-        <TechnicalSolutions />
+        <Pricing />
         <About />
         <Contact />
       </main>

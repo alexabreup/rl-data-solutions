@@ -1,112 +1,146 @@
-import React from 'react';
-import { 
-  ShoppingCart, 
-  Database, 
-  Cloud, 
-  BarChart3, 
-  Zap, 
-  Bot, 
-  Shield, 
-  Lightbulb 
-} from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
 
-const Services = () => {
+const Services: React.FC = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
   const services = [
     {
-      icon: ShoppingCart,
-      title: 'E-commerce B2C & B2B',
-      description: 'Desenvolvimento completo de lojas online B2C e portais B2B com automação inteligente, integração de sistemas e analytics avançados',
-      color: 'bg-blue-600',
-      highlight: true
+      title: "Análise de Dados",
+      description: "Transformamos dados brutos em insights valiosos para tomada de decisões estratégicas",
+      icon: "📊",
+      features: ["Dashboards interativos", "Relatórios personalizados", "Análise preditiva"]
     },
     {
-      icon: Database,
-      title: 'Pipeline de Dados',
-      description: 'Construção de pipelines robustos para ETL/ELT, garantindo fluxo contínuo e confiável de dados entre sistemas diversos',
-      color: 'bg-green-600'
+      title: "Automação de Processos",
+      description: "Automatizamos tarefas repetitivas para aumentar a eficiência operacional",
+      icon: "⚡",
+      features: ["Pipelines de dados", "Workflows automatizados", "Integração de sistemas"]
     },
     {
-      icon: Cloud,
-      title: 'Arquitetura Cloud',
-      description: 'Implementação de soluções em AWS, Azure e GCP com foco em escalabilidade, performance e otimização de custos',
-      color: 'bg-purple-600'
+      title: "E-commerce Solutions",
+      description: "Soluções completas para plataformas B2B e B2C de alta performance",
+      icon: "🛒",
+      features: ["Arquitetura escalável", "Otimização de performance", "Integração de APIs"]
     },
     {
-      icon: BarChart3,
-      title: 'Analytics & BI',
-      description: 'Desenvolvimento de dashboards interativos e relatórios avançados para tomada de decisão baseada em dados',
-      color: 'bg-orange-600'
-    },
-    {
-      icon: Zap,
-      title: 'Real-time Processing',
-      description: 'Processamento de dados em tempo real usando Apache Kafka, Spark Streaming e tecnologias modernas',
-      color: 'bg-yellow-600'
-    },
-    {
-      icon: Bot,
-      title: 'Automação de Processos',
-      description: 'Automação completa de processos de negócio, desde estoque até entrega, com integração de sistemas',
-      color: 'bg-teal-600'
-    },
-    {
-      icon: Shield,
-      title: 'Data Governance',
-      description: 'Implementação de políticas de governança, qualidade e segurança de dados para compliance e confiabilidade',
-      color: 'bg-red-600'
-    },
-    {
-      icon: Lightbulb,
-      title: 'Consultoria Técnica',
-      description: 'Consultoria especializada para otimização de processos e arquiteturas de dados existentes',
-      color: 'bg-indigo-600'
+      title: "Consultoria Especializada",
+      description: "Consultoria personalizada para transformação digital e estratégia de dados",
+      icon: "🎯",
+      features: ["Análise de requisitos", "Roadmap de implementação", "Treinamento da equipe"]
     }
   ];
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % services.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [services.length]);
+
+  const nextService = () => {
+    setCurrentIndex((prev) => (prev + 1) % services.length);
+  };
+
+  const prevService = () => {
+    setCurrentIndex((prev) => (prev - 1 + services.length) % services.length);
+  };
+
+  const goToService = (index: number) => {
+    setCurrentIndex(index);
+  };
+
   return (
-    <section id="services" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="depoimentos" className="py-20 lg:py-32 bg-dark-800 relative overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0">
+        <div className="absolute top-0 right-1/4 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+      </div>
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-            Nossos Serviços Completos
+          <div className="inline-flex items-center px-4 py-2 bg-primary-500/10 border border-primary-500/20 rounded-full mb-6">
+            <span className="text-primary-400 text-sm font-ibm-plex-medium">
+              🚀 Nossos Serviços
+            </span>
+          </div>
+          <h2 className="title-sm font-ibm-plex-bold mb-6">
+            Soluções{' '}
+            <span className="gradient-text font-ibm-plex-bold">
+              especializadas para seu negócio
+            </span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Soluções abrangentes em dados e e-commerce para transformar seu negócio
+          <p className="paragraph font-ibm-plex-regular max-w-3xl mx-auto">
+            Oferecemos serviços completos de análise de dados, automação e 
+            consultoria para impulsionar o crescimento da sua empresa.
           </p>
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {services.map((service, index) => {
-            const Icon = service.icon;
-            return (
-              <div
-                key={index}
-                className={`group relative ${service.highlight ? 'lg:col-span-2' : ''} bg-gray-50 p-8 rounded-lg border border-gray-200 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300`}
-              >
-                {service.highlight && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-blue-600 text-white px-6 py-2 rounded-lg text-sm font-medium">
-                      ⭐ DESTAQUE
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+          {services.map((service, index) => (
+            <div
+              key={index}
+              className="feature-card text-center group hover:scale-105 transition-all duration-300"
+            >
+              <div className="text-4xl mb-4">{service.icon}</div>
+              <h3 className="text-xl font-bold text-white mb-4 font-ibm-plex-semibold">
+                {service.title}
+              </h3>
+              <p className="text-gray-400 mb-6 font-ibm-plex-regular">
+                {service.description}
+              </p>
+              <ul className="space-y-2 text-left">
+                {service.features.map((feature, featureIndex) => (
+                  <li key={featureIndex} className="flex items-center space-x-2">
+                    <Star className="w-4 h-4 text-primary-400 flex-shrink-0" />
+                    <span className="text-sm text-gray-300 font-ibm-plex-medium">
+                      {feature}
                     </span>
-                  </div>
-                )}
-                
-                <div className={`${service.color} w-16 h-16 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                  <Icon className="h-8 w-8 text-white" />
-                </div>
-                
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  {service.title}
-                </h3>
-                
-                <p className="text-gray-700 leading-relaxed">
-                  {service.description}
-                </p>
-              </div>
-            );
-          })}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        {/* Stats Section */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="text-center">
+            <div className="text-3xl lg:text-4xl font-bold text-white mb-2 font-ibm-plex-bold">
+              500+
+            </div>
+            <div className="text-gray-400 font-ibm-plex-medium">
+              Clientes Satisfeitos
+            </div>
+          </div>
+          <div className="text-center">
+            <div className="text-3xl lg:text-4xl font-bold text-white mb-2 font-ibm-plex-bold">
+              98%
+            </div>
+            <div className="text-gray-400 font-ibm-plex-medium">
+              Taxa de Satisfação
+            </div>
+          </div>
+          <div className="text-center">
+            <div className="text-3xl lg:text-4xl font-bold text-white mb-2 font-ibm-plex-bold">
+              24/7
+            </div>
+            <div className="text-gray-400 font-ibm-plex-medium">
+              Suporte Técnico
+            </div>
+          </div>
+          <div className="text-center">
+            <div className="text-3xl lg:text-4xl font-bold text-white mb-2 font-ibm-plex-bold">
+              2.5x
+            </div>
+            <div className="text-gray-400 font-ibm-plex-medium">
+              Aumento na Eficiência
+            </div>
+          </div>
         </div>
       </div>
     </section>
